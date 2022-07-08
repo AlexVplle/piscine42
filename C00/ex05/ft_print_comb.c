@@ -6,7 +6,7 @@
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:56:02 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/07 18:37:25 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/08 11:03:28 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	ft_print_comb(void)
 	char	unity_number;
 
 	hundred_number = '0';
-	ten_number = '0';
-	unity_number = '0';
 	while (hundred_number < '8')
 	{
 		ten_number = hundred_number + 1;

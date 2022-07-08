@@ -6,48 +6,52 @@
 /*   By: avapaill <avapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 00:39:01 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/08 01:45:46 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/08 13:30:27 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	write_pattern(int n, char array_number[])
+void	write_pattern(int array_number[], int length, int separator)
 {
-	int	j;
+	char	number;
 
-	j = 0;
-	while (j < n)
+	if (separator)
 	{
-		write(1, &array_number[j], 1);
-		j++;
+		write(1, ", ", 2);
 	}
-	write(1, " ", 1);
+	while (length >= 0)
+	{
+		number = '0' + array_number[length];
+		write(1, &number, 1);
+		length--;
+	}
+}
+
+void	next_number(int an[], int dtp, int *separator, int length)
+{
+	while (an[dtp] < 10)
+	{
+		if (!dtp)
+		{
+			write_pattern(an, length, *separator);
+			*separator = 1;
+		}
+		else
+		{
+			an[dtp -1] = an[dtp] + 1;
+			next_number(an, dtp -1, separator, length);
+		}
+		an[dtp]++;
+	}
 }
 
 void	ft_print_combn(int n)
 {
-	char	array_number[n];
-	int		i;
+	int	array_number[10];
+	int	separator;
 
-	i = 0;
-	while (i < n)
-	{
-		array_number[i] = i + '0';
-		i++;
-	}
-	while (i >= 0)
-	{
-		while (array_number[i] < '9' - n + i + 1)
-		{
-			write_pattern(n, array_number);
-			array_number[i]++;
-		}
-		i--;
-	}
-}
-
-int	main(void)
-{
-	ft_print_combn(3);
+	separator = 0;
+	array_number[n - 1] = 0;
+	next_number(array_number, n - 1, &separator, n - 1);
 }

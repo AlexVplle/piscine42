@@ -6,7 +6,7 @@
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:45:12 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/07 18:36:36 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/08 11:05:27 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_print_comb2(void)
 	int	second_number;
 
 	first_number = 0;
-	second_number = 1;
 	while (first_number < 99)
 	{
 		second_number = first_number + 1;
