@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avapaill <avapaill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 01:07:13 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/10 13:13:58 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/10 16:32:14 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/10 17:40:34 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_str_is_alpha(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (src[i])
+	while (str[i] && str[i] >= 'A' && str[i] <= 'Z')
 	{
-		dest[i] = src[i];
+		str[i] += 32;
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] < 'a' || str[i] > 'z')
+			return (0);
+		i++;
+	}
+	return (1);
 }
