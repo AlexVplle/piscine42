@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: avapaill <avapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 13:15:54 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/12 17:10:12 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/12 02:08:55 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/12 15:49:32 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_strcmp(char *s1, char *s2)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (i < n && src[i])
+	while (*s1 != '\0' && *s1 == *s2)
 	{
-		dest[i] = src[i];
-		i++;
+		s1++;
+		s2++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	if (*s1 == *s2)
+		return (0);
+	else
+		return ((unsigned char) *s1 - (unsigned char) *s2);
 }

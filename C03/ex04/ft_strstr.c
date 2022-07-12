@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 13:15:54 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/12 17:10:12 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/12 18:15:29 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/12 18:44:17 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_strlen(char *str)
 {
-	unsigned int	i;
+	int	length;
 
-	i = 0;
-	while (i < n && src[i])
+	length = 0;
+	while (str[length] != '\0')
+		length++;
+	return (length);
+}
+
+char	*ft_strstr(char *str, char *to_find)
+{
+	int	count;
+	int	length;
+
+	length = strlen(to_find);
+	count = 0;
+	while (*str)
 	{
-		dest[i] = src[i];
-		i++;
+		if (*str == to_find[count])
+		{
+			count++;
+			if (count == length)
+				return (str - count);
+		}
+		else
+			count = 0;
+		str++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (NULL);
 }

@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 13:15:54 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/12 17:10:12 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/12 17:13:24 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/12 17:42:09 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_strlen(char *str)
 {
-	unsigned int	i;
+	int	length;
 
+	length = 0;
+	while (str[length] != '\0')
+		length++;
+	return (length);
+}
+
+char	*ft_strcat(char *dest, char *src)
+{
+	int	dest_length;
+	int	i;
+
+	dest_length = ft_strlen(dest);
 	i = 0;
-	while (i < n && src[i])
+	while (src[i])
 	{
-		dest[i] = src[i];
+		dest[dest_length + i] = src[i];
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
+	dest[dest_length + i] = '\0';
 	return (dest);
 }

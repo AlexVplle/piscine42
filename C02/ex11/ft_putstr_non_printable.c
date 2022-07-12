@@ -6,12 +6,12 @@
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 14:17:28 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/12 02:03:00 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/12 12:54:55 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
+
 void	ft_putstr_non_printable(char *str)
 {
 	int				i;
@@ -35,15 +35,7 @@ void	ft_putstr_non_printable(char *str)
 			write(1, &"0123456789abcdef"[second], 1);
 		}
 		else
-		{
 			write(1, &str[i], 1);
-		}
 		i++;
 	}
-}
-
-int	main(void)
-{
-	char	test[] = "€";
-	ft_putstr_non_printable(test);
 }
