@@ -6,7 +6,7 @@
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:15:29 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/12 18:44:17 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:16:15 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ char	*ft_strstr(char *str, char *to_find)
 	int	count;
 	int	length;
 
-	length = strlen(to_find);
+	length = ft_strlen(to_find);
 	count = 0;
 	while (*str)
 	{
 		if (*str == to_find[count])
 		{
 			count++;
-			if (count == length)
-				return (str - count);
 		}
 		else
 			count = 0;
+		if (count == length)
+			return (str - count);
 		str++;
 	}
-	return (NULL);
+	return ((void *) 0);
 }
