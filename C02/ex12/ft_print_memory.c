@@ -6,7 +6,7 @@
 /*   By: avapaill <avapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 00:31:55 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/13 13:31:48 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/14 01:19:18 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putchar(int hexa)
 	write(1, &"0123456789abcdef"[hexa], 1);
 }
 
-void	write_address(unsigned long long nb)
+void	write_hexa(unsigned long long nb)
 {	
 	if (nb < 16)
 	{
@@ -27,8 +27,8 @@ void	write_address(unsigned long long nb)
 	}	
 	else
 	{
-		ft_putnbr(nb / 16);
-		ft_putnbr(nb % 16);
+		write_hexa(nb / 16);
+		write_hexa(nb % 16);
 	}
 }
 
@@ -37,13 +37,24 @@ void	print_address(void *addr)
 	unsigned long long addr_long;
 
 	addr_long = (unsigned long long) &addr;
-	write_address(addr_long);
-	write(1, ":", 1);
+	write_hexa(addr_long);
+	write(1, ": ", 1);
 }
 
 void	*ft_print_memory(void *addr, unsigned int size)
 {
+	int	count;
+	
 	print_address(addr);
+	while (count < 8)
+	{
+		write_hexa((unsigned long long) *addr);
+		addr++;
+		write_hexa((unsigned long long) *addr);
+		write(1, " ", 1);
+		addr++;
+		count++;
+	}
 }
 
 int		main(void)
