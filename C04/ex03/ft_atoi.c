@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 15:50:15 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/13 16:34:35 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/13 17:55:21 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/13 19:02:23 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+char	*remove_white_space(char *str)
 {
-	while (*s1 && n > 0 && *s1 == *s2)
+	while(*str < 33)
+		str++;
+	return (str);
+}
+
+unsigned int	create_number(char *str, int number)
+{
+	if (*str >= '0' && *str <= '9')
+}
+
+int	ft_atoi(char *str)
+{
+	int	negative;
+	int	number;
+	str = remove_white_space(str);
+	while(str == '+' || str == '-')
 	{
-		s1++;
-		s2++;
-		n--;
+		if (str == "-")
+			negative++;
+		str++;
 	}
-	if (*s1 == *s2)
-		return (0);
-	else
-		return ((unsigned char) *s1 - (unsigned char) *s2);
 }

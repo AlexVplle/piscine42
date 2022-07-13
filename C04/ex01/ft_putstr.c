@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 15:50:15 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/13 16:34:35 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/13 13:58:45 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/13 14:46:35 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+#include <unistd.h>
+
+void	ft_putstr(char *str)
 {
-	while (*s1 && n > 0 && *s1 == *s2)
+	while (*str)
 	{
-		s1++;
-		s2++;
-		n--;
+		write(1, str, 1);
+		str++;
 	}
-	if (*s1 == *s2)
-		return (0);
-	else
-		return ((unsigned char) *s1 - (unsigned char) *s2);
 }
