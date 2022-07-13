@@ -6,13 +6,13 @@
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:50:15 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/13 16:34:35 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/13 22:56:19 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	while (*s1 && n > 0 && *s1 == *s2)
+	while (*s1 && n > 1 && *s1 == *s2)
 	{
 		s1++;
 		s2++;
