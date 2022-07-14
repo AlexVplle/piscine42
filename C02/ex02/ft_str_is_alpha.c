@@ -6,7 +6,7 @@
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:32:14 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/10 17:40:34 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/14 14:07:21 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,10 @@ int	ft_str_is_alpha(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] && str[i] >= 'A' && str[i] <= 'Z')
-	{
-		str[i] += 32;
-		i++;
-	}
-	i = 0;
 	while (str[i])
 	{
-		if (str[i] < 'a' || str[i] > 'z')
+		if ((str[i] < 'a' || str[i] > 'z')
+			&& (str[i] < 'A' || str[i] > 'Z'))
 			return (0);
 		i++;
 	}

@@ -6,9 +6,25 @@
 /*   By: avapaill <avapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 00:43:03 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/11 11:17:20 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/14 14:31:18 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strlowcase(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
+		i++;
+	}
+	return (str);
+}
 
 char	*ft_strcapitalize(char *str)
 {
@@ -17,21 +33,17 @@ char	*ft_strcapitalize(char *str)
 
 	i = 0;
 	capitalize = 1;
-	while (str[i] && str[i] >= 'A' && str[i] <= 'Z')
-	{
-		str[i] += 32;
-		i++;
-	}
-	i = 0;
+	ft_strlowcase(str);
 	while (str[i])
 	{
-		if ((str[i] >= 'a' && str[i] <= 'z')
-			|| (str[i] >= '0' && str[i] <= '9'))
+		if (str[i] >= 'a' && str[i] <= 'z')
 		{
-			if (str[i] >= 'a' && str[i] <= 'z' && capitalize)
+			if (capitalize)
 				str[i] -= 32;
 			capitalize = 0;
 		}
+		else if('0' <= str[i] && str[i] <= '9')
+			capitalize = 0;
 		else
 			capitalize = 1;
 		i++;
