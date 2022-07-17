@@ -6,7 +6,7 @@
 /*   By: avapaill <avapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 23:24:51 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/15 01:14:02 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/18 00:16:11 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,35 @@ int	ft_strcmp(char *s1, char *s2)
 	return ((unsigned char) *s1 - (unsigned char) *s2);
 }
 
-char	*ft_strcpy(char *dest, char *src)
+void	ft_swap(char *a, char *b)
 {
-	int	i;
+	char	*buffer;
 
-	i = 0;
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	buffer = *a;
+	*a = *b;
+	*b = buffer;
 }
 
 void	sort_argv(int argc, char *argv[])
 {
-	
+	int		i;
+	int		j;
+	char	*temp;
+
+	i = 1;
+	while (i < argc)
+	{
+		j = 1;
+		while (j < argc)
+		{
+			if (ft_strcmp(argv[j], argv[j + 1]) > 0)
+			{
+				ft_swap(argv[j], argv[j + 1]);
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -61,8 +73,7 @@ int	main(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		printf("%s\n", argv[i]);
-		//ft_putstr(argv[i]);
+		ft_putstr(argv[i]);
 		i++;
 	}
 }
