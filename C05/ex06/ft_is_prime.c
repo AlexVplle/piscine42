@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: avapaill <avapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 18:59:35 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/19 00:05:43 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/19 00:13:36 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/19 00:33:25 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+int	ft_is_prime(int nb)
 {
-	int	i;
+	long	i;
 
-	i = 0;
+	i = 2;
+	if (nb < 2)
+		return (0);
 	while (i * i <= nb)
 	{
-		if (i * i == nb)
-			return (i);
+		if (!(nb % i))
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
