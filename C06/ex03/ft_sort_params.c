@@ -6,7 +6,7 @@
 /*   By: avapaill <avapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 23:24:51 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/18 16:11:49 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/19 09:09:46 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_strcmp(char *s1, char *s2)
 	i = 0;
 	while (s1[i] != '\0' && s1[i] == s2[i])
 		i++;
-	return ((unsigned char) *s1 - (unsigned char) *s2);
+	return (s1[i] - s2[i]);
 }
 
 void	ft_swap(char **a, char **b)
@@ -56,6 +56,19 @@ void	sort_argv(int argc, char *argv[])
 				ft_swap(&argv[j], &argv[j + 1]);
 			j++;
 		}
+		i++;
+	}
+}
+
+int	main(int argc, char *argv[])
+{
+	int	i;
+
+	sort_argv(argc, argv);
+	i = 1;
+	while (i < argc)
+	{
+		ft_putstr(argv[i]);
 		i++;
 	}
 }

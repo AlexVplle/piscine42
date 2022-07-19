@@ -1,27 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 18:59:35 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/19 10:04:22 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/19 08:43:58 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/19 14:25:07 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stdlib.h>
 
-int	ft_sqrt(int nb)
+int	ft_strlen(char *str)
 {
-	long	i;
+	int	length;
+
+	length = 0;
+	while (*str++)
+		length++;
+	return (length);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
 
 	i = 0;
-	while (i * i <= nb)
+	while (src[i])
 	{
-		if (i * i == nb)
-			return (i);
+		dest[i] = src[i];
 		i++;
 	}
-	return (0);
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_strdup(char *src)
+{
+	int		length;
+	char	*dest;
+
+	length = ft_strlen(src);
+	dest = malloc((length + 1) * sizeof(char));
+	ft_strcpy(dest, src);
+	return (dest);
 }
