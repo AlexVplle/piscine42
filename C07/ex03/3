@@ -6,11 +6,12 @@
 /*   By: avapaill <avapaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 01:04:09 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/20 15:29:07 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:09:34 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int	ft_strlen(char *str)
 {
@@ -49,6 +50,7 @@ int	ft_all_length(int size, char **strs, char *sep)
 		if (separator)
 			length += ft_strlen(sep);
 		length += ft_strlen(*(strs + i));
+		printf("%s ", *(strs + i));
 		separator = 1;
 		i++;
 	}
@@ -69,8 +71,6 @@ char	*ft_all_strcpy(int size, char **strs, char *sep, char *string)
 		if (separator)
 			string = ft_strcpy(string, sep);
 		string = ft_strcpy(string, *(strs + i));
-		separator = 1;
-		i++;
 	}
 	*string = '\0';
 	return (start_string);
@@ -83,14 +83,22 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 
 	if (!size)
 	{
-		string = malloc(1 * sizeof(char));
+		string = malloc(sizeof(char));
 		if (!string)
 			return ((void *) 0);
-		*string = '\0';
+		string = '\0';
 		return (string);
 	}
 	all_size = ft_all_length(size, strs, sep);
 	string = malloc((all_size) * sizeof(char));
-	string = ft_all_strcpy(size, strs, sep, string);
-	return (string);
+	//string = ft_all_strcpy(size, strs, sep, string);
+	printf("%d ",all_size);
+	//return (string);
+	return ("");
+}
+
+int	main(int argc, char **argv)
+{
+	char *tab[] = {"test", "coucou"};
+	printf("%s\n",  ft_strjoin(1, tab, "_"));
 }
