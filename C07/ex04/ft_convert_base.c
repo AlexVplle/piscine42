@@ -6,12 +6,13 @@
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 16:50:52 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/21 19:33:58 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/22 00:49:21 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+int		convert_number_decimal(char *nbr, char *base_from, int len_base_from);
+char	*create_number(int negative, int num, int len_base_to, char *base_to);
+char	*create_number(int negative, int num, int len_base_to, char *base_to);
 
 unsigned int	ft_strlen(char *str)
 {
@@ -28,6 +29,8 @@ int	check_conditions(char *base, unsigned int len)
 	unsigned int	i;
 	unsigned int	j;
 
+	if (len < 2)
+		return (0);
 	i = 0;
 	while (i < len)
 	{
@@ -42,8 +45,6 @@ int	check_conditions(char *base, unsigned int len)
 		}
 		i++;
 	}
-	if (i < 1)
-		return (0);
 	return (1);
 }
 
@@ -57,28 +58,14 @@ char	*remove_white_space(char *str)
 int	len_number(int number, int len_base)
 {
 	int	i;
-	i = 1;
 
-	while(number >= len_base)
+	i = 1;
+	while (number >= len_base)
 	{
 		number /= len_base;
 		i++;
 	}
-	return (i)
-}
-
-int	find_digit(char to_find, char *base)
-{
-	int	i;
-
-	i = 0;
-	while (base[i])
-	{
-		if (to_find == base[i])
-			return (i);
-		i++;
-	}
-	return (-1);
+	return (i);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
@@ -87,14 +74,13 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	unsigned int	len_base_to;
 	int				negative;
 	int				number;
-	int				digit
 
 	len_base_from = ft_strlen(base_from);
 	len_base_to = ft_strlen(base_to);
 	negative = 0;
-	number = 0;
-	if (!check_conditions(base_from, len_base_from) || !check_conditions(base_to, len_base_to))
-		return (NULL);
+	if (!check_conditions(base_from, len_base_from)
+		|| !check_conditions(base_to, len_base_to))
+		return ((void *) 0);
 	nbr = remove_white_space(nbr);
 	while (*nbr == '+' || *nbr == '-')
 	{
@@ -102,17 +88,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 			negative++;
 		nbr++;
 	}
-	while(*nbr)
-	{
-		digit = find_digit(*nbr, base_from);
-		if (digit == -1)
-			break ;
-		number = number * len_base_from + digit;
-		nbr++;
-	}
-}
-
-int	main()
-{
-	ft_convert_base("1100100", "01", "01");
+	negative %= 2;
+	number = convert_number_decimal(nbr, base_from, len_base_from);
+	return (create_number(negative, number, len_base_to, base_to));
 }
