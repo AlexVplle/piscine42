@@ -1,20 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avapaill <avapaill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 01:56:37 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/21 01:56:54 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/21 16:34:12 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/21 16:36:43 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_abs.h"
-
-int	main(void)
-{
-	printf("%d\n", ABS(-42));
-	printf("%d\n", ABS(42));
-}
+#include <stdlib.h>
