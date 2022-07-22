@@ -6,11 +6,12 @@
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:31:23 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/22 00:48:21 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:21:37 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int	find_digit(char to_find, char *base)
 {
@@ -26,11 +27,11 @@ int	find_digit(char to_find, char *base)
 	return (-1);
 }
 
-int	convert_number_decimal(char	*nbr, char *base_from, int len_base_from)
+long	convert_number_decimal(char	*nbr, char *base_from, int len_base_from)
 {
-	int	digit;
-	int	number;
-	int	i;
+	int		digit;
+	long	number;
+	int		i;
 
 	i = 0;
 	number = 0;
@@ -45,7 +46,7 @@ int	convert_number_decimal(char	*nbr, char *base_from, int len_base_from)
 	return (number);
 }
 
-int	ft_length_to(int number, int len_base_to)
+int	ft_length_to(long number, int len_base_to)
 {
 	int	i;
 
@@ -58,7 +59,7 @@ int	ft_length_to(int number, int len_base_to)
 	return (i);
 }
 
-char	*create_number(int negative, int num, int len_base_to, char *base_to)
+char	*create_number(int negative, long num, int len_base_to, char *base_to)
 {
 	char	*result;
 	int		length_to;
@@ -67,14 +68,15 @@ char	*create_number(int negative, int num, int len_base_to, char *base_to)
 	length_to = ft_length_to(num, len_base_to) + 1 + negative;
 	result = malloc(length_to * sizeof(char));
 	i = length_to - 1;
-	result[i--] = '\0';
-	if (negative)
-		result[0] = '-';
+	result[i] = '\0';
+	i--;
 	while (num)
 	{
 		result[i] = base_to[num % len_base_to];
 		num /= len_base_to;
 		i--;
 	}
+	if (negative)
+		result[i] = '-';
 	return (result);
 }	
