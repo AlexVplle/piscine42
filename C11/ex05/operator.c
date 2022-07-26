@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_sort.c                                       :+:      :+:    :+:   */
+/*   operator.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 17:45:40 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/26 18:46:15 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/26 19:10:49 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/26 19:12:08 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_sort(int *tab, int length, int (*f)(int, int))
-{
-	int	i;
+#include "util.h"
 
-	i = 0;
-	while (i < length - 1)
-	{
-		if ((*f)(tab[i], tab[i + 1]) > 0)
-			return (0);
-		i++;
-	}
-	return (1);
+void	plus(int a, int b)
+{
+	ft_putnbr(a + b);
+}
+
+void	minus(int a, int b)
+{
+	ft_putnbr(a - b);
+}
+
+void	division(int a, int b)
+{
+	ft_putnbr(a / b);
+}
+
+void	multiplication(int a, int b)
+{
+	ft_putnbr(a * b);
+}
+
+void	plus(int a, int b)
+{
+	ft_putnbr(a + b);
 }

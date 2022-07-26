@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_sort.c                                       :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 17:45:40 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/26 18:46:15 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/26 18:55:34 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/26 18:55:55 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_sort(int *tab, int length, int (*f)(int, int))
+void	ft_putchar(char c)
 {
-	int	i;
+	write(1, &c, 1);
+}
 
-	i = 0;
-	while (i < length - 1)
+void	ft_putnbr(int nb)
+{	
+	if (nb == -2147483648)
 	{
-		if ((*f)(tab[i], tab[i + 1]) > 0)
-			return (0);
-		i++;
+		write(1, "-2147483648", 11);
+		return ;
 	}
-	return (1);
+	if (nb >= 0 && nb < 10)
+	{
+		ft_putchar(nb + '0');
+		return ;
+	}	
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr(-nb);
+	}
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
 }

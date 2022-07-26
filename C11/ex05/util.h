@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_sort.c                                       :+:      :+:    :+:   */
+/*   util.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 17:45:40 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/26 18:46:15 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/26 18:56:54 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/26 18:59:56 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_sort(int *tab, int length, int (*f)(int, int))
-{
-	int	i;
+#ifndef UTIL_H
+# define UTIL_H
 
-	i = 0;
-	while (i < length - 1)
-	{
-		if ((*f)(tab[i], tab[i + 1]) > 0)
-			return (0);
-		i++;
-	}
-	return (1);
-}
+void	ft_putnbr(int nb);
+
+#endif

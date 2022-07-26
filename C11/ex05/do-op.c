@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_sort.c                                       :+:      :+:    :+:   */
+/*   do-op.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 17:45:40 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/26 18:46:15 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/26 18:47:52 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/26 19:19:02 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_sort(int *tab, int length, int (*f)(int, int))
-{
-	int	i;
+#include "operator.h"
 
-	i = 0;
-	while (i < length - 1)
-	{
-		if ((*f)(tab[i], tab[i + 1]) > 0)
-			return (0);
-		i++;
-	}
-	return (1);
+int	main(int argc, char *argv[])
+{
+	
 }
