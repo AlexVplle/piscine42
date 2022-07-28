@@ -6,15 +6,14 @@
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 16:50:52 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/22 11:21:11 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:46:55 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
 int		convert_number_decimal(char *nbr, char *base_from, int len_base_from);
-char	*create_number(int negative, int num, int len_base_to, char *base_to);
-char	*create_number(int negative, int num, int len_base_to, char *base_to);
+char	*create_number(int negative, long num, int len_base_to, char *base_to);
 
 unsigned int	ft_strlen(char *str)
 {
@@ -76,6 +75,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	unsigned int	len_base_to;
 	int				negative;
 	long			number;
+	char			*string;
 
 	len_base_from = ft_strlen(base_from);
 	len_base_to = ft_strlen(base_to);
@@ -92,5 +92,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	}
 	negative %= 2;
 	number = convert_number_decimal(nbr, base_from, len_base_from);
-	return (create_number(negative, number, len_base_to, base_to));
+	string = create_number(negative, number, len_base_to, base_to);
+	if (!string)
+		return ((void *) 0);
+	return (string);
 }

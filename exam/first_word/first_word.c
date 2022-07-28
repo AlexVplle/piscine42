@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 11:22:20 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/28 11:02:22 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/28 14:56:55 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/28 15:42:45 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include <unistd.h>
+
+int	main(int argc, char *argv[])
 {
-	int	length;
-
-	length = 0;
-	while (str[length] != '\0')
-		length++;
-	return (length);
-}
-
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	length;
-
-	length = ft_strlen(src);
-	i = 0;
-	while (i + 1 < size && src[i])
+	if (argc != 2)
 	{
-		dest[i] = src[i];
-		i++;
+		write(1, "\n", 1);
+		return (0);
 	}
-	while (i < size)
+	while (*argv[1] && (*argv[1] == ' ' || *argv[1] == '\b'
+			|| *argv[1] == '\t' || *argv[1] == '\v'))
+		argv[1]++;
+	while (*argv[1] && *argv[1] != ' ' && *argv[1] != '\b'
+			&& *argv[1] != '\t' && *argv[1] != '\v')
 	{
-		dest[i] = '\0';
-		i++;
+		write(1, argv[1], 1);
+		argv[1]++;
 	}
-	return (length);
+	write(1, "\n", 1);
 }

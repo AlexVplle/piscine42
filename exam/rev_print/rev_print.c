@@ -1,41 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   rev_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 11:22:20 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/28 11:02:22 by avapaill         ###   ########.fr       */
+/*   Created: 2022/07/28 16:43:14 by avapaill          #+#    #+#             */
+/*   Updated: 2022/07/28 17:15:41 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
+/*void	print_rev(char *c)
+{
+	if (*c)
+	{
+		print_rev(c + 1);
+		write(1, c, 1);
+	}
+}*/
+
 int	ft_strlen(char *str)
 {
-	int	length;
+	int	i;
 
-	length = 0;
-	while (str[length] != '\0')
-		length++;
-	return (length);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	main(int argc, char *argv[])
 {
-	unsigned int	i;
-	unsigned int	length;
+	int	i;
 
-	length = ft_strlen(src);
 	i = 0;
-	while (i + 1 < size && src[i])
+	if (argc != 2)
 	{
-		dest[i] = src[i];
-		i++;
+		write(1, "\n", 1);
+		return (0);
 	}
-	while (i < size)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (length);
+//	print_rev(argv[1]);
+	i = ft_strlen(argv[1]) - 1;
+	while (i >= 0)
+		write(1, &argv[1][i--], 1);
+	write(1, "\n", 1);
 }

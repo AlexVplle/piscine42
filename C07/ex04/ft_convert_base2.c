@@ -6,7 +6,7 @@
 /*   By: avapaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:31:23 by avapaill          #+#    #+#             */
-/*   Updated: 2022/07/22 11:21:37 by avapaill         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:46:03 by avapaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,17 @@ char	*create_number(int negative, long num, int len_base_to, char *base_to)
 	int		length_to;
 	int		i;
 
+	if (!num)
+		negative = 0;
 	length_to = ft_length_to(num, len_base_to) + 1 + negative;
 	result = malloc(length_to * sizeof(char));
+	if (!result)
+		return ((void *) 0);
 	i = length_to - 1;
 	result[i] = '\0';
+	i--;
+	result[i] = base_to[num % len_base_to];
+	num /= len_base_to;
 	i--;
 	while (num)
 	{
